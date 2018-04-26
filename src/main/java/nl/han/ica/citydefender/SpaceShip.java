@@ -26,4 +26,13 @@ public class SpaceShip extends SpriteObject {
 		
 
 	}
+	
+	@Override
+	public void draw(PGraphics g) {
+		g.pushMatrix();
+		g.translate(getCenterX(), getCenterY());
+		g.rotate(-HALF_PI);
+		g.image(getImage(), -width / 2, -height / 2);
+		g.popMatrix();
+	}
 }

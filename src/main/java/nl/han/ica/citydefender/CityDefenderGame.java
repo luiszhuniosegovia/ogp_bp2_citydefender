@@ -12,7 +12,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import processing.core.PApplet;
 
 public class CityDefenderGame extends GameEngine {
-
+	public static final int GAMEWIDTH=1280;
+	public static final int GAMEHEIGHT=720;
 	/**
 	 * 
 	 */
@@ -35,13 +36,13 @@ public class CityDefenderGame extends GameEngine {
 		SpriteObject s = new SpaceShip(new Sprite("resources/media/PNG/Enemies/enemyBlack5.png"));
 			
 		s.setX(0);
-		s.setY(500);
+		s.setY(100);
 		s.setxSpeed(5);
 		this.addGameObject(s);
 		
-		Cannon cannon = new Cannon(worldWidth/2, worldHeight);
+		Cannon cannon = new Cannon(GAMEWIDTH/2, GAMEHEIGHT);
 		this.addGameObject(cannon);
-		createView(worldWidth, worldHeight);
+		createView(GAMEWIDTH,GAMEHEIGHT);
 
 
 	}
