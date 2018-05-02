@@ -35,4 +35,9 @@ public class SpaceShip extends SpriteObject {
 		g.image(getImage(), -width / 2, -height / 2);
 		g.popMatrix();
 	}
+	
+	public Bomb getBomb() {
+		
+		return getBomb();
+	}
 }
