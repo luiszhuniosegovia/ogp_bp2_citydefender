@@ -64,6 +64,5 @@ public class SpaceShip extends CollidableGameObject implements IPointValue {
 	@Override
 	public void setPointValue(int value) {
 		this.pointvalue = value;
-		
 	}
 }

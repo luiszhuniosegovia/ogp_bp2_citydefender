@@ -1,5 +1,6 @@
 package nl.han.ica.citydefender;
 
+
 import java.util.List;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
@@ -24,3 +25,4 @@ public abstract class AlienWeapon extends CollidableGameObject {
 	}
 
 }
+

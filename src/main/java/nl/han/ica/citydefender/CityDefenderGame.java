@@ -46,8 +46,8 @@ public class CityDefenderGame extends GameEngine {
 		Cannon cannon = new Cannon(GAMEWIDTH/2, GAMEHEIGHT);
 		this.addGameObject(cannon);
 		createView(GAMEWIDTH,GAMEHEIGHT);
-
-
+		
+		
 	}
 	
 	private PImage createBackground() {
@@ -68,6 +68,7 @@ public class CityDefenderGame extends GameEngine {
 		return renderer.get();
 	}
 	
+
 
 	private void createView(int worldWidth, int worldHeight) {
 		
