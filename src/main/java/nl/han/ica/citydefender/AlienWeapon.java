@@ -1,25 +1,28 @@
 package nl.han.ica.citydefender;
 
+
+import java.util.List;
+
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
-import processing.core.PGraphics;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.citydefender.CollidableGameObject;
 
-public class AlienWeapon extends GameObject{
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+
+public abstract class AlienWeapon extends CollidableGameObject {
+
+	/**
+	 * AlienWeapon Constructor
+	 * @param sprite Image to use for rendering the weapon
+	 */
+	public AlienWeapon(Sprite sprite) {
+		super(sprite);
 	}
 
 	@Override
-	public void draw(PGraphics g) {
-		
-		Bomb.getBombImg();
-		Missile.getMissilImg();
-			
-		}	
+	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
+		// TODO Check for hitting a building
 	}
-	
 
-
+}
 
