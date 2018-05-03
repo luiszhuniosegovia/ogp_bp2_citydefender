@@ -1,19 +1,19 @@
 package nl.han.ica.citydefender;
 
-
 import java.util.List;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.citydefender.CollidableGameObject;
 
-
-
-public abstract class AlienWeapon extends CollidableGameObject {
+public abstract class AlienWeapon extends CollidableGameObject implements IPointValue {
+	private int pointValue = 1;
 
 	/**
 	 * AlienWeapon Constructor
-	 * @param sprite Image to use for rendering the weapon
+	 * 
+	 * @param sprite
+	 *            Image to use for rendering the weapon
 	 */
 	public AlienWeapon(Sprite sprite) {
 		super(sprite);
@@ -21,8 +21,18 @@ public abstract class AlienWeapon extends CollidableGameObject {
 
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		// TODO Check for hitting a building
+		for(GameObject g: collidedGameObjects) {
+			if(g instanceof Gebouw) {
+				((Gebouw)g).hit();
+			}
+		}
 	}
 
-}
+	public int getPointValue() {
+		return pointValue;
+	}
 
+	public void setPointValue(int pointValue) {
+		this.pointValue = pointValue;
+	}
+}

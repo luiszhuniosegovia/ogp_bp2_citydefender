@@ -60,7 +60,7 @@ public class CityDefenderGame extends GameEngine {
 		for(int x = 0; x<countX; x++) {
 			for(int y = 0; y<countY; y++) {
 				//renderer.background(255);
-				System.out.println(x);
+				
 				renderer.image(p, x*p.width, y*p.height);
 			}
 		}

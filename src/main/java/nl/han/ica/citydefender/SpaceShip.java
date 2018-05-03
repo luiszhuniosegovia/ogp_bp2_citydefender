@@ -1,6 +1,7 @@
 package nl.han.ica.citydefender;
 
 import java.util.List;
+import java.util.Random;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.FileLogHandler;
@@ -17,22 +18,29 @@ public class SpaceShip extends CollidableGameObject implements IPointValue {
 	private static int POINTVALUE = 1;
 	private int pointvalue = POINTVALUE;
 	
-	private WeaponGenerator generator = new BombGenerator();
+	private WeaponGenerator generator;
 	
 	/**
 	 * Constructor 
 	 * @param sprite The image used for the spaceship
 	 */
 	public SpaceShip(Sprite sprite) {
-		
 		super(sprite);
+		Random random = new Random();
 		
-		
+		if(random.nextInt(Settings.MISSILE_CHANCE) == 0) {
+		  generator = new MissileGenerator(this);
+		} else {
+		  generator = new BombGenerator(this);
+		}
+		 
 	}
 
 	@Override
 	public void update() {
 		super.update();
+		System.out.println("Update Spaceship");
+		generator.generateObject();
 	}
 	
 	/**

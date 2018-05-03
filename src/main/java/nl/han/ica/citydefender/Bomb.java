@@ -1,18 +1,13 @@
 package nl.han.ica.citydefender;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import processing.core.PImage;
 
-public class Bomb extends Sprite{
-	private final static String bombImg= "resources/media/PNG/Lasers/Laser2.png";
+public class Bomb extends AlienWeapon {
+	private final static String bombImg= "resources/media/PNG/Lasers/laserRed08.png";
 
-	public Bomb(PImage image) {
-		super(image);
-			
-	}
 	
-	public static String getBombImg() {
-		return bombImg;
+	public Bomb() {
+		super(new Sprite(bombImg));		
 	}
 
 }
