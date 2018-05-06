@@ -6,18 +6,16 @@ import processing.core.PGraphics;
 import processing.core.PImage;
 
 public class House extends Gebouw {
-	private int x;
-	private float y;
-	private int b;
-	private int h;
 
 	@Override
 	public void draw(PGraphics g) {	
-	
+
+	x=(CityDefenderGame.GAMEWIDTH);
+	y=(CityDefenderGame.GAMEHEIGHT)-height;
 		for(int i =0;i<20;i++) {	
 		
 		g.pushMatrix();
-		g.translate(i*60,640);
+		g.translate(i*60,y-60);
 		g.stroke(0, 50, 200, 100);
         g.fill(210, 10, 20, 50);
         g.rect(0,0, 40,60);
