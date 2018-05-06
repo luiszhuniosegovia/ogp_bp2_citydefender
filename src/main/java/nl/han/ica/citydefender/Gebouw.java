@@ -13,6 +13,7 @@ public abstract class Gebouw extends GameObject {
 
 	@Override
 	public abstract void draw(PGraphics g);
+
 	
 	public abstract void hit();
 

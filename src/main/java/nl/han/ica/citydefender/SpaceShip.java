@@ -39,7 +39,7 @@ public class SpaceShip extends CollidableGameObject implements IPointValue {
 	@Override
 	public void update() {
 		super.update();
-		System.out.println("Update Spaceship");
+		//System.out.println("Update Spaceship");
 		generator.generateObject();
 	}
 	

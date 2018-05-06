@@ -14,9 +14,9 @@ import java.util.List;
 public class Bubble extends GameObject implements ICollidableWithGameObjects{
 
     private final Sound popSound;
-    private WaterWorld world;
-    private int bubbleSize;
-
+     private WaterWorld world;
+     private int bubbleSize;
+  
     /**
      * Constructor
      * @param bubbleSize Afmeting van de bel

@@ -7,11 +7,11 @@ import nl.han.ica.OOPDProcessingEngineHAN.Logger.FileLogHandler;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PImage;
+
 
 public class CityDefenderGame extends GameEngine {
 	public static final int GAMEWIDTH=1280;
@@ -22,14 +22,15 @@ public class CityDefenderGame extends GameEngine {
 	 */
 	private static final long serialVersionUID = 1L;
 	public Vector<IGameObjectGenerator> gameObjectGenerators = new Vector<>();
-	private int score;
+	static int score;
 
 	public static void main(String[] args) {
 		PApplet.main(new String[]{CityDefenderGame.class.getName()});
 	}
 
 	public CityDefenderGame( ) {
-		this.instance = this;
+		this.instance = this;	
+
 	}
 	
 	@Override
@@ -41,14 +42,28 @@ public class CityDefenderGame extends GameEngine {
 		// TODO Auto-generated method stub
 		this.addGameObject(new TitlePopup(this));
 		
+		this.addGameObject(new ScoreDisplay(sketchPath, score, score));
+	
+				
 		this.gameObjectGenerators.add(new SpaceShipGenerator());
 		
 		Cannon cannon = new Cannon(GAMEWIDTH/2, GAMEHEIGHT);
 		this.addGameObject(cannon);
 		createView(GAMEWIDTH,GAMEHEIGHT);
 		
+		Gebouw tower = new Tower();
+		Gebouw house = new House();
+		if( house instanceof Gebouw) {
+			this.addGameObject(house);
+		} else {
+			if( tower instanceof Gebouw) {
+			this.addGameObject(tower);
+			}
+		}
 		
 	}
+	
+	
 	
 	private PImage createBackground() {
 		PGraphics renderer = createGraphics(GAMEWIDTH, GAMEHEIGHT);
@@ -89,14 +104,31 @@ public class CityDefenderGame extends GameEngine {
 		for (IGameObjectGenerator generator : gameObjectGenerators) {
 			generator.generateObject();
 		}
+		score=getScore();
+		System.out.println("update score =  "+ score);
 
 	}
 	
 	public static CityDefenderGame instance() {
 		return CityDefenderGame.instance;
 	}
+	
+	public int getScore() {
+		//System.out.println("getscore =  "+ score);
+		return score;
+	}
+	
+	public void setScore(int score) {
+		//System.out.println("setscore =  "+ score);
+
+		this.score = score;
+	}
+	
 
 	public void addPoints(int pointValue) {
-		this.score += pointValue;
+		this.setScore(this.getScore() + pointValue);
+		System.out.println("Point = "+ pointValue);
+
 	}
+
 }
