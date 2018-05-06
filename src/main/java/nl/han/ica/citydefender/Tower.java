@@ -1,27 +1,27 @@
 package nl.han.ica.citydefender;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import processing.core.PGraphics;
 
 public class Tower extends Gebouw {
+	private final static String towerImg = "resources/media/PNG/Gebouwen/Tower03a.png";
+
+	public Tower() {
+		super(new Sprite (towerImg));
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void draw(PGraphics g) {
 		// TODO Auto-generated method stub
 		x=(CityDefenderGame.GAMEWIDTH);
 		y=(CityDefenderGame.GAMEHEIGHT)-height;
-			
-		for(int i =0;i<20;i++) {	
-			
-			g.pushMatrix();
-			g.translate(i*60,y-80);
-			g.stroke(0, 50, 200, 100);
-	        g.fill(0, 100, 20, 50);
-	        g.rect(0,0, 40,80);
-			g.popMatrix();
-	        
+
+		g.image(getImage(), 0,y);
+
 			System.out.println("tower");
 		}
-	}
+	
 
 	@Override
 	public void hit() {

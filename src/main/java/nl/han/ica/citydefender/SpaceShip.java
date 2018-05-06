@@ -15,7 +15,7 @@ import processing.core.PGraphics;
 
 public class SpaceShip extends CollidableGameObject implements IPointValue {
 
-	private static int POINTVALUE = 1;
+	private static int POINTVALUE = 2;
 	private int pointvalue = POINTVALUE;
 	
 	private WeaponGenerator generator;

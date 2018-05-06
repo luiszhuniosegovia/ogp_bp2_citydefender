@@ -51,8 +51,15 @@ public class CityDefenderGame extends GameEngine {
 		this.addGameObject(cannon);
 		createView(GAMEWIDTH,GAMEHEIGHT);
 		
-		Gebouw tower = new Tower();
+		
 		Gebouw house = new House();
+		this.addGameObject(house);
+	
+ 		Gebouw tower = new Tower();
+		this.addGameObject(tower);
+		
+	}
+		/**
 		if( house instanceof Gebouw) {
 			this.addGameObject(house);
 		} else {
@@ -61,7 +68,7 @@ public class CityDefenderGame extends GameEngine {
 			}
 		}
 		
-	}
+	}*/
 	
 	
 	

@@ -6,25 +6,24 @@ import processing.core.PGraphics;
 import processing.core.PImage;
 
 public class House extends Gebouw {
+	private final static String houseImg = "resources/media/PNG/Gebouwen/House02.png";
+
+	public House() {
+		super(new Sprite (houseImg));
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void draw(PGraphics g) {	
 
-	x=(CityDefenderGame.GAMEWIDTH);
+	x= 50;  //(CityDefenderGame.GAMEWIDTH);
 	y=(CityDefenderGame.GAMEHEIGHT)-height;
-		for(int i =0;i<20;i++) {	
+	
+	g.image(getImage(), x, y);
 		
-		g.pushMatrix();
-		g.translate(i*60,y-60);
-		g.stroke(0, 50, 200, 100);
-        g.fill(210, 10, 20, 50);
-        g.rect(0,0, 40,60);
-		g.popMatrix();
-        
-		//System.out.println("house");
-		}
 	}
 
+	
 	@Override
 	public void hit() {
 		
