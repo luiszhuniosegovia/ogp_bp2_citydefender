@@ -113,4 +113,5 @@ public class Cannon extends SpriteObject {
 		// TODO Auto-generated method stub
 		return angle;
 	}
+
 }

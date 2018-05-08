@@ -11,4 +11,6 @@ public final class Settings {
 	public static final int ALIENWEAPON_RATE = 450; // Random chance per update (roughly 1/15sec)
 	public static final float MISSILE_SPEED = 2f;
 	public static final int MISSILE_CHANCE = 2;
+	public static final int STAR = 200;
+
 }

@@ -1,5 +1,6 @@
 package nl.han.ica.citydefender;
 
+import java.util.Random;
 import java.util.Vector;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
@@ -40,36 +41,63 @@ public class CityDefenderGame extends GameEngine {
 		logger.addLogHandler(new FileLogHandler());
 		
 		// TODO Auto-generated method stub
-		this.addGameObject(new TitlePopup(this));
 		
+		this.addGameObject(new TitlePopup(this));
 		this.addGameObject(new ScoreDisplay(sketchPath, score, score));
-	
-				
+		//this.addGameObject(new GameOverPopup(sketchPath, 40));
+		
 		this.gameObjectGenerators.add(new SpaceShipGenerator());
 		
 		Cannon cannon = new Cannon(GAMEWIDTH/2, GAMEHEIGHT);
 		this.addGameObject(cannon);
 		createView(GAMEWIDTH,GAMEHEIGHT);
 		
+		createBuildings();
 		
-		Gebouw house = new House();
-		this.addGameObject(house);
-	
- 		Gebouw tower = new Tower();
-		this.addGameObject(tower);
 		
 	}
-		/**
-		if( house instanceof Gebouw) {
-			this.addGameObject(house);
-		} else {
-			if( tower instanceof Gebouw) {
-			this.addGameObject(tower);
-			}
-		}
-		
-	}*/
 	
+	private void createBuildings() {
+		// Remove any existing buildings from the game
+	            // Theres a bug in GameEngine that fails to remove subclasses:
+		
+		deleteAllGameObjectsOfType(House.class);
+	            deleteAllGameObjectsOfType(Tower.class);
+		//Gebouw.resetCount();
+		int i =0;
+		Random random = new Random();
+	            // Left side
+	            // 120 = Maximum width of Gebouw + 20
+		while(i < Settings.GAMEWIDTH/2 -120) {
+			Gebouw building = random.nextBoolean()?new House():new Tower();
+			this.addGameObject(building, i, GAMEHEIGHT-building.getHeight());
+			i+= building.getWidth();
+			System.out.println("create buildings 1");
+		}
+	            // Right side
+		i = Settings.GAMEWIDTH;
+		while(i> Settings.GAMEWIDTH/2 + 120) {
+			System.out.println(i);
+			Gebouw building = random.nextBoolean()?new House():new Tower();
+			this.addGameObject(building, i-building.getWidth(), GAMEHEIGHT-building.getHeight());
+			i-= building.getWidth();
+			System.out.println("create buildings 2");
+		}
+
+		}
+
+	private void createView(int worldWidth, int worldHeight) {
+		
+		View view = new View(worldWidth, worldHeight);
+		setView(view);
+			
+		//view.setBackground(28, 0, 69);
+		PImage p = createBackground();
+			//System.out.println("Image Size: "+p.width+"x"+p.height);
+		//System.out.println("View  Size: "+view.getWorldWidth()+"x"+view.getWorldHeight());
+		view.setBackground(p);
+			size(GAMEWIDTH, GAMEHEIGHT);
+	}
 	
 	
 	private PImage createBackground() {
@@ -90,20 +118,12 @@ public class CityDefenderGame extends GameEngine {
 		return renderer.get();
 	}
 	
+	
+	
 
 
-	private void createView(int worldWidth, int worldHeight) {
-		
-		View view = new View(worldWidth, worldHeight);
-		setView(view);
-		
-		//view.setBackground(28, 0, 69);
-		PImage p = createBackground();
-		//System.out.println("Image Size: "+p.width+"x"+p.height);
-		//System.out.println("View  Size: "+view.getWorldWidth()+"x"+view.getWorldHeight());
-		view.setBackground(p);
-		size(GAMEWIDTH, GAMEHEIGHT);
-	}
+	
+	
 
 	@Override
 	public void update() {
@@ -112,8 +132,8 @@ public class CityDefenderGame extends GameEngine {
 			generator.generateObject();
 		}
 		score=getScore();
-		System.out.println("update score =  "+ score);
-
+		//System.out.println("update score =  "+ score);
+	
 	}
 	
 	public static CityDefenderGame instance() {
@@ -136,6 +156,13 @@ public class CityDefenderGame extends GameEngine {
 		this.setScore(this.getScore() + pointValue);
 		System.out.println("Point = "+ pointValue);
 
+	}
+
+	public void GameOverPopup() {
+		// TODO Auto-generated method stub
+	stop();
+	this.addGameObject(new GameOverPopup(sketchPath, 40));
+	
 	}
 
 }

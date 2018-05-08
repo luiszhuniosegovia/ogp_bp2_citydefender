@@ -4,7 +4,9 @@ import java.util.List;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import nl.han.ica.citydefender.CollidableGameObject;
+import processing.core.PGraphics;
 
 public abstract class AlienWeapon extends CollidableGameObject implements IPointValue {
 	private int pointValue = 1;
@@ -24,10 +26,20 @@ public abstract class AlienWeapon extends CollidableGameObject implements IPoint
 		for(GameObject g: collidedGameObjects) {
 			if(g instanceof Gebouw) {
 				((Gebouw)g).hit();
+				System.out.print("hit");
+			} 
+			
+			if(g instanceof Cannon) {
+			CityDefenderGame.instance().deleteGameObject(g);
+			CityDefenderGame.instance().GameOverPopup();
+
+			System.out.print("Canon hit");
 			}
 		}
+								
 	}
-
+	
+	
 	public int getPointValue() {
 		return pointValue;
 	}

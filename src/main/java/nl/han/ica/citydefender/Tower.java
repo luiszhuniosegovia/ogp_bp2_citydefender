@@ -13,20 +13,22 @@ public class Tower extends Gebouw {
 
 	@Override
 	public void draw(PGraphics g) {
-		// TODO Auto-generated method stub
+
 		x=(CityDefenderGame.GAMEWIDTH);
 		y=(CityDefenderGame.GAMEHEIGHT)-height;
 
 		g.image(getImage(), 0,y);
-
-			System.out.println("tower");
-		}
-	
+}
+		
 
 	@Override
 	public void hit() {
-		// TODO Auto-generated method stub
-
+		
+		if (towerImg != null) {
+			
+			CityDefenderGame.instance().deleteGameObject(this);
+			} 
+		
 	}
 
 }

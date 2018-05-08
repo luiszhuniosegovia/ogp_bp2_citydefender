@@ -1,5 +1,7 @@
 package nl.han.ica.citydefender;
 
+import java.util.Random;
+
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
@@ -11,6 +13,7 @@ public abstract class Gebouw extends SpriteObject {
 		super(sprite);
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	@Override
 	public void update() {
@@ -18,10 +21,12 @@ public abstract class Gebouw extends SpriteObject {
 		
 	}
 
+	
 	@Override
 	public abstract void draw(PGraphics g);
 
 	
 	public abstract void hit();
+
 
 }

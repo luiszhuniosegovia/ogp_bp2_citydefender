@@ -19,14 +19,17 @@ public class House extends Gebouw {
 	x= 50;  //(CityDefenderGame.GAMEWIDTH);
 	y=(CityDefenderGame.GAMEHEIGHT)-height;
 	
-	g.image(getImage(), x, y);
+	g.image(getImage(),x, y);
 		
 	}
 
 	
 	@Override
 	public void hit() {
-		
+
+		if (houseImg != null) {
+		CityDefenderGame.instance().deleteGameObject(this);
+		} 
 	}
 }
 	
